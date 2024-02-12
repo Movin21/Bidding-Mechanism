@@ -6,7 +6,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NavBar from "./components/shared/NavBar.tsx";
 import CreateAuction from "./pages/createAuction.tsx";
 import Register from "./pages/Register.tsx";
-import { ActivityLogIcon } from "@radix-ui/react-icons";
 import Login from "./pages/Login.tsx";
 
 const router = createBrowserRouter([

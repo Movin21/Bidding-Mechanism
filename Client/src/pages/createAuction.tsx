@@ -1,4 +1,4 @@
-import * as React from "react";
+import { DatePickerWithPresets } from "../components/ui/DatePicker";
 import { Textarea } from "@/components/ui/textarea";
 
 import { Button } from "@/components/ui/button";
@@ -40,11 +40,10 @@ const Register = () => {
                 />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="Duration">Time Duration</Label>
+                <Label htmlFor="Starting Price">Date</Label>
                 <Input
-                  id="Duration"
-                  type="Number"
-                  placeholder="Enter Time Duration"
+                  id="Date and Time"
+                  placeholder="Date"
                 />
               </div>
             </div>

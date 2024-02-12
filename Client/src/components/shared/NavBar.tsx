@@ -5,7 +5,7 @@ const NavBar = () => {
   return (
     <>
       <nav className="bg-gray-800 py-4">
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-4 m-">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <a

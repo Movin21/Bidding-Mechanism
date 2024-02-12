@@ -7,7 +7,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
-
 import { Input } from "@/components/ui/input";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
@@ -21,7 +20,7 @@ const BiddingComponenet = () => {
     countDown,
     biddingMechanism,
     setEnteredValue,
-  } = useBid(20, new Date("2024-02-07T00:42:00"));
+  } = useBid(20, new Date("2024-02-07T10:52:00"));
   return (
     <div className="p-20">
       <Card>
