@@ -7,64 +7,95 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { setDate } from "date-fns";
-import { useState } from "react";
 
+import { ChangeEvent, FormEvent, useState } from "react";
+import axios from "axios";
 const Register = () => {
-  const [itemName, setItemName] = useState("");
-  const [itemDescription, setItemDescription] = useState("");
-  const [price, setprice] = useState("");
-  const [date, setdate] = useState(() => new Date());
+  const [formData, setFormData] = useState({
+    ItemName: "",
+    ItemDescription: "",
+    InitialPrice: "",
+    Date: "",
+  });
+
+  const handleChange = (
+    e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(formData);
+    axios
+      .post("http://localhost:8000/api/create", formData)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err.message);
+      });
+  };
 
   return (
     <div className="flex justify-center p-40">
-      <form>
+      <form onSubmit={handleSubmit}>
         <Card className="w-[450px]">
           <CardHeader>
             <CardTitle className="text-2xl">Create an Auction</CardTitle>
             <CardDescription>Welcome to the mini auctioneers..</CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={(e) => e.preventDefault()}>
-              <label>Item Name :</label>
-              <br />
-              <input
-                className="border"
-                type="text"
-                placeholder="Enter a name"
-                onChange={(e) => setItemName(e.target.value)}
-              />
-              <br />
-              <label>Item Description :</label>
-              <br />
-              <textarea
-                rows={7}
-                cols={45}
-                placeholder=" Item Description."
-                className="border "
-                onChange={(e) => setItemDescription(e.target.value)}
-              />
-              <br />
-              <label>Initial Price :</label>
-              <br />
-              <input
-                className="border"
-                type="number"
-                placeholder="Initial Price"
-                onChange={(e) => setprice(e.target.value)}
-              />
-              <br />
-              <label>Date :</label>
-              <br />
-              <input
-                type="date"
-                className="border"
-                onChange={(e: any) => setdate(e.target.value)}
-              />
-            </form>
+            <label className="font-semibold leading-none tracking-tight">
+              Item Name :
+            </label>
+            <br />
+            <input
+              className="border-2 rounded-lg"
+              name="ItemName"
+              type="text"
+              placeholder="Enter a name"
+              onChange={handleChange}
+            />
+            <br />
+            <label className="font-semibold leading-none tracking-tight">
+              Item Description :
+            </label>
+            <br />
+            <textarea
+              rows={7}
+              cols={45}
+              name="ItemDescription"
+              placeholder=" Item Description."
+              className="border-2 rounded-lg"
+              onChange={handleChange}
+            />
+            <br />
+            <label className="font-semibold leading-none tracking-tight">
+              Initial Price :
+            </label>
+            <br />
+            <input
+              className="border-2 rounded-lg"
+              type="number"
+              placeholder="Initial Price"
+              onChange={handleChange}
+              name="InitialPrice"
+            />
+            <br />
+            <label className="font-semibold leading-none tracking-tight">
+              Date :
+            </label>
+            <br />
+            <input
+              type="datetime-local"
+              className="border-2 rounded-lg"
+              onChange={handleChange}
+              name="Date"
+            />
           </CardContent>
           <CardFooter className="flex justify-center">
-            <Button>Create a Auction</Button>
+            <Button type="submit">Create a Auction</Button>
           </CardFooter>
         </Card>
       </form>
