@@ -30,19 +30,6 @@ const NavBar = () => {
                     Create an Auction
                   </a>
                 </li>
-                <li>
-                  <a
-                    href="/register"
-                    className="text-gray-300 hover:text-white"
-                  >
-                    Register
-                  </a>
-                </li>
-                <li>
-                  <a href="/login" className="text-gray-300 hover:text-white">
-                    Login
-                  </a>
-                </li>
               </ul>
             </div>
           </div>

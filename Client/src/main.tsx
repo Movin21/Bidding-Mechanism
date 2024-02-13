@@ -5,8 +5,6 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NavBar from "./components/shared/NavBar.tsx";
 import CreateAuction from "./pages/createAuction.tsx";
-import Register from "./pages/Register.tsx";
-import Login from "./pages/Login.tsx";
 
 const router = createBrowserRouter([
   {
@@ -19,14 +17,6 @@ const router = createBrowserRouter([
       {
         path: "/createAuction",
         element: <CreateAuction />,
-      },
-      {
-        path: "/register",
-        element: <Register />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
       },
     ],
   },
