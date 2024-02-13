@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import BiddingComponenet from "./pages/Auctions/BiddingFE.tsx";
+import BiddingComponenet from "./pages/Auctions/OnGoingAuctions.tsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NavBar from "./components/shared/NavBar.tsx";
