@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import LogModel from "../persistance/logModel";
+
 
 const createRouter = express.Router();
 
