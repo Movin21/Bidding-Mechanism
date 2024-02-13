@@ -11,32 +11,31 @@ import { Input } from "@/components/ui/input";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
-import { useBid } from "../hooks/useBid";
+import { useBid } from "../../hooks/useBid";
 
-const BiddingComponenet = () => {
+type Auctions = {
+  startingPrice: number;
+  initialDate: Date;
+  itemName: string;
+  itemDescription: string;
+};
+const AuctionCard = (props: Auctions) => {
+
   const {
     startingPrice,
     currentHighestBid,
     countDown,
     biddingMechanism,
     setEnteredValue,
-  } = useBid(20, new Date("2024-02-07T10:52:00"));
+  } = useBid(props.startingPrice, props.initialDate);
+  
   return (
     <div className="p-20">
       <Card>
         <CardHeader>
-          <CardTitle className="text-3xl">Art 1</CardTitle>
+          <CardTitle className="text-3xl">{props.itemName}</CardTitle>
           <CardDescription className="text-l font-medium">
-            It is a long established fact that a reader will be distracted by
-            the readable content of a page when looking at its layout. The point
-            of using Lorem Ipsum is that it has a more-or-less normal
-            distribution of letters, as opposed to using 'Content here, content
-            here', making it look like readable English. Many desktop publishing
-            packages and web page editors now use Lorem Ipsum as their default
-            model text, and a search for 'lorem ipsum' will uncover many web
-            sites still in their infancy. Various versions have evolved over the
-            years, sometimes by accident, sometimes on purpose (injected humour
-            and the like).
+            {props.itemDescription}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -100,4 +99,4 @@ const BiddingComponenet = () => {
   );
 };
 
-export default BiddingComponenet;
+export default AuctionCard;
