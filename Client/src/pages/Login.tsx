@@ -17,7 +17,7 @@ const Register = () => {
     <div className="flex justify-center p-40">
       <Card className="w-[850px]  m-4 ">
         <CardHeader>
-          <CardTitle className="text-2xl">Log in</CardTitle>
+          <CardTitle className="text-2xl ">Log in</CardTitle>
           <CardDescription>
             Log in to the Account for Start Bidding
           </CardDescription>

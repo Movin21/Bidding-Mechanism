@@ -1,5 +1,3 @@
-import * as React from "react";
-
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -11,38 +9,81 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Schema, z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+const schema = z.object({
+  username: z.string(),
+  password: z.string().min(8),
+});
+
+type FormFeilds = z.infer<typeof schema>;
 
 const Register = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<FormFeilds>({ resolver: zodResolver(schema) });
+
+  const fetchData = async (data: FormFeilds) => {
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      console.log(data);
+    } catch (error) {
+      //setError("This one is taken")
+    }
+  };
   return (
-    <div className="flex justify-center p-40">
-      <Card className="w-[850px]">
-        <CardHeader>
-          <CardTitle className="text-2xl">Register</CardTitle>
-          <CardDescription>Create a new Account as a Bidder.</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form>
+    <div className="flex justify-center my-80">
+      <form onSubmit={handleSubmit(fetchData)}>
+        <Card className="w-[350px]">
+          <CardHeader>
+            <CardTitle className="">Register</CardTitle>
+            <CardDescription>Welcom to mini-auctions</CardDescription>
+          </CardHeader>
+          <CardContent>
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="username">username</Label>
-                <Input id="username" placeholder="Enter username" />
+                <Label htmlFor="Username">Username</Label>
+                <Input
+                  placeholder="Username"
+                  {...register("username", {
+                    required: "username is required",
+                    maxLength: 8,
+                  })}
+                />
+                {errors.username && (
+                  <p className="text-red-500">{errors.username.message}</p>
+                )}
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="password">Password</Label>
-                <Input id="password" placeholder="Enter password" />
+                <Label htmlFor="password">Passsword</Label>
+                <Input
+                  placeholder="password"
+                  {...register("password", { required: true, minLength: 6 })}
+                />
               </div>
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="password">Re-enter Password</Label>
-                <Input id="password" placeholder="Enter password" />
+                <Label htmlFor="conformPassword">Conform Password</Label>
+                <Input
+                  placeholder="conform Password"
+                  {...register("password", {
+                    required: true,
+                    minLength: 6,
+                  })}
+                />
               </div>
             </div>
-          </form>
-        </CardContent>
-        <CardFooter className="flex justify-between">
-          <Button variant="outline">Cancel</Button>
-          <Button>Create</Button>
-        </CardFooter>
-      </Card>
+          </CardContent>
+          <CardFooter className="flex justify-between">
+            <Button variant="outline">Cancel</Button>
+            <Button disabled={isSubmitting} type="submit">
+              {isSubmitting ? "Creating an Account..." : "Create"}
+            </Button>
+          </CardFooter>
+        </Card>
+      </form>
     </div>
   );
 };
