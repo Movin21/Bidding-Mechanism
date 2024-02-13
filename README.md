@@ -6,7 +6,7 @@
 
 ## Please Note that...
 
-I am a beginner currently pursuing my undergraduate degree. I developed this auction bidding mechanism from scratch as a part of my learning journey. While I may be new to the field, this project showcases my dedication to learning and building practical applications. I welcome any reveiw, feedback, and suggestions for improvement, as they will help me grow as a developer.
+I am a beginner currently pursuing my undergraduate degree. I developed this auction bidding mechanism using MERN stack with Typescript from scratch as a part of my learning journey. While I may be new to the field, this project showcases my dedication to learning and building practical applications. I welcome any reveiw, feedback, and suggestions for improvement, as they will help me grow as a developer.
 
 
 ## Overview
