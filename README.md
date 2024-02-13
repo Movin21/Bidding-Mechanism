@@ -10,7 +10,7 @@ I am a beginner currently pursuing my undergraduate degree. I developed this auc
 
 
 ## Overview
-This project implements an auction bidding mechanism with a countdown timer. It allows users to place bids on items within the auction, with bids required to be higher than the current highest bid. The auction timer counts down until the end of the bidding period.
+This MERN project implements an auction bidding mechanism with a countdown timer. It allows users to place bids on items within the auction, with bids required to be higher than the current highest bid. The auction timer counts down until the end of the bidding period.
 
 
 ## Features
